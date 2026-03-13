@@ -1,0 +1,24 @@
+﻿@model List<string>
+    @{
+
+    List<string> urls = ViewData["Urls"] as List<string>;
+}
+<form method="post">
+    <label for="url">Select a URL:</label>
+    <select name="paginaweb" class="form-control">
+        @foreach (string url in urls)
+            {
+            <option value="@url">@url</option>
+            }
+    </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+   
+@if (Model != null)
+{
+    <h2>Selected Images:</h2>
+        @foreach (string imageUrl in Model)
+            {
+            <img src="@imageUrl" alt="Image" style="max-width: 200px; max-height: 200px;" />
+            }
+}
